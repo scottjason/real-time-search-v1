@@ -1,5 +1,6 @@
 import React from 'react';
-import {Input, Form} from './Search.style';
+import {Input, Form, NextPage, PrevPage} from './Search.style';
+import { AngleLeft, AngleRight } from 'styled-icons/fa-solid';
 import debounce from 'debounce';
 
 const Search = ({ performSearch }) => {
@@ -20,13 +21,22 @@ const Search = ({ performSearch }) => {
   }
 
   return(
-    <Form onSubmit={onSubmit}>
-      <Input
-        placeholder={'Search images...'}
-        onChange={debouncedSearch}
-        ref={inputRef}
-      />
-    </Form>
+    <React.Fragment>
+      <Form onSubmit={onSubmit}>
+        <PrevPage>
+          <AngleLeft />
+        </PrevPage>
+        <Input
+          placeholder={'Search images...'}
+          onChange={debouncedSearch}
+          ref={inputRef}
+        />
+      <NextPage>
+        <AngleRight />
+      </NextPage>
+      </Form>
+
+    </React.Fragment>
   )
 }
 

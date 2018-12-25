@@ -20,6 +20,22 @@ export const Input = styled.input`
 `;
 
 export const Form = styled.form`
-  margin: 0;
-  padding: 0;
-`
+  display: flex;
+  justify-content: center;
+`;
+
+export const PrevPage = styled.div`
+  margin-top: 20px;
+  margin-right: 25px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+`;
+
+export const NextPage = styled.div`
+  margin-top: 20px;
+  margin-left: 25px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+`;

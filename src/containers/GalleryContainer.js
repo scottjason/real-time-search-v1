@@ -7,7 +7,7 @@ class GalleryContainer extends Component {
     super(props);
     this.state = {
       images: [],
-      cacheByTerm: {},
+      searchCache: {},
     };
   }
   static defaultProps = {
@@ -15,12 +15,19 @@ class GalleryContainer extends Component {
     defaultPage: 1,
   }
   componentDidMount() {
-    this.performSearch(this.props.defaultTerm, this.props.defaultPage);
+    const { defaultTerm, defaultPage } = this.props;
+    this.performSearch(defaultTerm, defaultPage);
+  }
+  isInCache(term, page) {
+    return this.state.searchCache[term] && this.state.searchCache[term][page];
+  }
+  getFromCache(term, page) {
+    return this.state.searchCache[term][page];
   }
   performSearch = (term, page) => {
-    if (this.state.cacheByTerm[term] && this.state.cacheByTerm[term][page]) {
-      let images = this.state.cacheByTerm[term][page];
-      this.setState({images})
+    if(this.isInCache(term, page)) {
+      let images = this.getFromCache(term, page);
+      this.setState({images});
       return;
     }
     fetchByTerm(term).then(res => {
@@ -30,10 +37,11 @@ class GalleryContainer extends Component {
         let id = img.id;
         return { id, imageUrl }
       })
-      let cacheByTerm = this.state.cacheByTerm;
-      cacheByTerm[term] = {};
-      cacheByTerm[term][page] = images;
-      this.setState({images, cacheByTerm})
+      let searchCache = this.state.searchCache;
+      searchCache[term] = {};
+      searchCache[term].totalPages = totalPages;
+      searchCache[term][page] = images;
+      this.setState({images, searchCache})
     });
   }
   render() {
