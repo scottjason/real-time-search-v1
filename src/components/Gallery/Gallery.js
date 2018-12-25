@@ -6,7 +6,11 @@ import { Grid, Container } from './Gallery.style';
 const Gallery = props => {
   return(
     <Container>
-      <Search performSearch={props.performSearch} />
+      <Search
+        fetchPrev={props.fetchPrev}
+        fetchNext={props.fetchNext}
+        performSearch={props.performSearch}
+      />
       <Grid>
         {props.images.map((item, i)=> {
           return(
