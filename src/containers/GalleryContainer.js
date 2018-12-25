@@ -8,6 +8,7 @@ class GalleryContainer extends Component {
     this.state = {
       page: 1,
       images: [],
+      renderedTerm: 'nature',
       searchCache: {},
       totalPages: 0,
     };
@@ -23,12 +24,6 @@ class GalleryContainer extends Component {
   isInCache(term, page) {
     return this.state.searchCache[term] && this.state.searchCache[term][page];
   }
-  getImagesFromCache(term, page) {
-    return this.state.searchCache[term][page];
-  }
-  getPaginationOptsFromCache(term) {
-    return this.state.searchCache[term].paginationOpts;
-  }
   fetchPrev = term => {
     let page = this.state.page - 1;
     this.performSearch(term, page);
@@ -37,14 +32,32 @@ class GalleryContainer extends Component {
     let page = this.state.page + 1;
     this.performSearch(term, page);
   }
+  getStats(){
+    return {
+      page: this.state.page,
+      term: this.state.renderedTerm,
+      totalPages: this.state.totalPages,
+    }
+  }
   performSearch = (term, page) => {
-    console.log('performSearch', term, page)
+    
+    if (!term) {
+      let images = [];
+      let renderedTerm = '';
+      let paginationOpts = {};
+      let page = 1;
+      let totalPages = 0;
+      this.setState({images, paginationOpts, page, totalPages, renderedTerm})
+      return;
+    }
+    
+    let renderedTerm = term;
     term = term.toLowerCase();
     if(this.isInCache(term, page)) {
-      console.log('hit cache')
-      let images = this.getImagesFromCache(term, page);
-      let paginationOpts = this.getPaginationOptsFromCache(term);
-      this.setState({images, page, paginationOpts})
+      let images = this.state.searchCache[term][page];
+      let paginationOpts = this.state.searchCache[term].paginationOpts;
+      let totalPages = this.state.searchCache[term].totalPages;
+      this.setState({images, renderedTerm, page, totalPages, paginationOpts})
       return;
     }
     fetchByTerm(term, page).then(res => {
@@ -60,13 +73,15 @@ class GalleryContainer extends Component {
       let left = page > 1;
       let right = page < totalPages;
       let paginationOpts = { left, right }
+      searchCache[term].totalPages = totalPages;
       searchCache[term].paginationOpts = paginationOpts;
-      this.setState({images, page, searchCache, paginationOpts})
+      this.setState({images, page, renderedTerm, searchCache, totalPages, paginationOpts})
     });
   }
   render() {
     return(
       <Gallery
+        stats={this.getStats()}
         images={this.state.images}
         paginationOpts={this.state.paginationOpts}
         fetchPrev={term=> this.fetchPrev(term)}

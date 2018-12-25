@@ -1,12 +1,13 @@
 import React from 'react';
 import Image from '../Image/Image';
 import Search from '../Search/Search';
-import { Grid, Container } from './Gallery.style';
+import { Grid, NoResults, Container } from './Gallery.style';
 
 const Gallery = props => {
   return(
     <Container>
       <Search
+        stats={props.stats}
         fetchPrev={props.fetchPrev}
         fetchNext={props.fetchNext}
         performSearch={props.performSearch}
@@ -22,6 +23,12 @@ const Gallery = props => {
           )
         })}
       </Grid>
+      
+      {!props.images.length &&
+        <NoResults>
+          No Results
+        </NoResults>
+      }
     </Container>
   )
 }

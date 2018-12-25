@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
 
+export const Container = styled.div`
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+`;
+
 export const Input = styled.input`
   width: 600px;
   height: 50px;

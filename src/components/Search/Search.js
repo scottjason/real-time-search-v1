@@ -1,6 +1,7 @@
 import React from 'react';
-import {Input, Form} from './Search.style';
+import {Input, Form, Container} from './Search.style';
 import Pagination from '../Pagination/Pagination';
+import Stats from '../Stats/Stats';
 import debounce from 'debounce';
 
 const Search = props => {
@@ -13,7 +14,7 @@ const Search = props => {
 
   const debouncedSearch = debounce(()=> {
     props.performSearch(getInputVal(), 1);
-  }, 200);
+  }, 100);
   
   const onSubmit = e => {
     e && e.preventDefault();
@@ -27,25 +28,28 @@ const Search = props => {
   const enableNext = props.paginationOpts && props.paginationOpts.right;
 
   return(
-    <Form onSubmit={onSubmit}>
-      <Pagination
-        enabled={enablePrev}
-        term={getInputVal()}
-        fetchPrev={fetchPrev}
-      />
-      <Input
-        autoFocus={true}
-        placeholder={'Search images...'}
-        defaultValue={'nature'}
-        onChange={debouncedSearch}
-        ref={inputRef}
-      />
-      <Pagination
-        enabled={enableNext}
-        term={getInputVal()}
-        fetchNext={fetchNext}
-      />
-    </Form>
+    <Container>
+      <Stats stats={props.stats} />
+      <Form onSubmit={onSubmit}>
+        <Pagination
+          enabled={enablePrev}
+          term={getInputVal()}
+          fetchPrev={fetchPrev}
+        />
+        <Input
+          autoFocus={true}
+          placeholder={'Search images...'}
+          defaultValue={'nature'}
+          onChange={debouncedSearch}
+          ref={inputRef}
+        />
+        <Pagination
+          enabled={enableNext}
+          term={getInputVal()}
+          fetchNext={fetchNext}
+        />
+      </Form>
+    </Container>
   )
 }
 
