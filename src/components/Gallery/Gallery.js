@@ -10,6 +10,7 @@ const Gallery = props => {
         fetchPrev={props.fetchPrev}
         fetchNext={props.fetchNext}
         performSearch={props.performSearch}
+        paginationOpts={props.paginationOpts}
       />
       <Grid>
         {props.images.map((item, i)=> {

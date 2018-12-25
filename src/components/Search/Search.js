@@ -22,10 +22,14 @@ const Search = props => {
 
   const fetchPrev = () => props.fetchPrev(getInputVal());
   const fetchNext = () => props.fetchNext(getInputVal());
+  
+  const enablePrev = props.paginationOpts && props.paginationOpts.left;
+  const enableNext = props.paginationOpts && props.paginationOpts.right;
 
   return(
     <Form onSubmit={onSubmit}>
       <Pagination
+        enabled={enablePrev}
         term={getInputVal()}
         fetchPrev={fetchPrev}
       />
@@ -37,6 +41,7 @@ const Search = props => {
         ref={inputRef}
       />
       <Pagination
+        enabled={enableNext}
         term={getInputVal()}
         fetchNext={fetchNext}
       />
