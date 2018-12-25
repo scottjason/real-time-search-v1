@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));  
     line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
-    background-color: white;
+    background-color: black;
     font-family: 'Open Sans', sans-serif;
   }
 `;
@@ -19,7 +19,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1920px;
-  background-color: white;
+  background-color: black;
 `
 
 export default GlobalStyles;

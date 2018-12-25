@@ -21,22 +21,21 @@ const Search = ({ performSearch }) => {
   }
 
   return(
-    <React.Fragment>
       <Form onSubmit={onSubmit}>
         <PrevPage>
           <AngleLeft />
         </PrevPage>
+        
         <Input
           placeholder={'Search images...'}
           onChange={debouncedSearch}
           ref={inputRef}
         />
-      <NextPage>
-        <AngleRight />
-      </NextPage>
+        
+        <NextPage>
+          <AngleRight />
+        </NextPage>
       </Form>
-
-    </React.Fragment>
   )
 }
 

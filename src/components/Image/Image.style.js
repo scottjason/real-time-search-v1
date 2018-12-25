@@ -7,7 +7,7 @@ export const Img = styled.div`
   background-repeat: no-repeat;
   background-postion: center;
   background-image: url(${props => props.imageUrl});
-  border: 1px solid rgba(0, 0, 0, .3);
+  border: 1px solid rgba(225, 225, 225, .4);
   transition: all ease 150ms;
   box-sizing: border-box;
   ${media.lessThan('medium')`
