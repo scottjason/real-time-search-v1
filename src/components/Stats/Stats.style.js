@@ -7,6 +7,7 @@ export const Container = styled.div`
   color: white;
   font-weight: 300;
   line-height: 1.1rem;
+  margin-left: 30px;
   visibility: ${props=> props.isHidden ? 'hidden' : 'visible'};
 `;
 

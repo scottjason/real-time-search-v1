@@ -10,6 +10,7 @@ export const Container = styled.div`
   line-height: 1.1rem;
   font-size: .9rem;
   text-align: right;
+  margin-right: 30px;
   visibility: ${props=> props.isHidden ? 'hidden' : 'visible'};
 `;
 
