@@ -11,7 +11,7 @@ const Gallery = props => {
         {props.images.map((item, i)=> {
           return(
             <Image
-              key={i}
+              key={item.id}
               item={item}
             />
           )

@@ -5,12 +5,15 @@ exports[`Gallery it should match snapshot 1`] = `
   images={
     Array [
       Object {
+        "id": 0,
         "imageUrl": "https://picsum.photos/500",
       },
       Object {
+        "id": 1,
         "imageUrl": "https://picsum.photos/500",
       },
       Object {
+        "id": 2,
         "imageUrl": "https://picsum.photos/500",
       },
     ]
@@ -194,6 +197,7 @@ exports[`Gallery it should match snapshot 1`] = `
               <Image
                 item={
                   Object {
+                    "id": 0,
                     "imageUrl": "https://picsum.photos/500",
                   }
                 }
@@ -262,6 +266,7 @@ exports[`Gallery it should match snapshot 1`] = `
               <Image
                 item={
                   Object {
+                    "id": 1,
                     "imageUrl": "https://picsum.photos/500",
                   }
                 }
@@ -330,6 +335,7 @@ exports[`Gallery it should match snapshot 1`] = `
               <Image
                 item={
                   Object {
+                    "id": 2,
                     "imageUrl": "https://picsum.photos/500",
                   }
                 }

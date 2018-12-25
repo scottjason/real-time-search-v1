@@ -17,7 +17,8 @@ class GalleryContainer extends Component {
     fetchByTerm(term).then(res => {
       let images = res.results.map(img=> {
         let imageUrl = img.urls.regular;
-        return { imageUrl }
+        let id = img.id;
+        return { id, imageUrl }
       })
       this.setState({images})
     });
