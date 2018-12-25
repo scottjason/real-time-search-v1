@@ -29,7 +29,7 @@ const Search = props => {
 
   return(
     <Container>
-      <Stats stats={props.stats} />
+      <Stats isRequesting={props.isRequesting} stats={props.stats} />
       <Form onSubmit={onSubmit}>
         <Pagination
           enabled={enablePrev}

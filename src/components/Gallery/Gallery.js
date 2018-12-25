@@ -4,9 +4,13 @@ import Search from '../Search/Search';
 import { Grid, NoResults, Container } from './Gallery.style';
 
 const Gallery = props => {
+  const getMsg = () => {
+    return props.isRequesting ? 'Loading...' : 'No Results';
+  }
   return(
     <Container>
       <Search
+        isRequesting={props.isRequesting}
         stats={props.stats}
         fetchPrev={props.fetchPrev}
         fetchNext={props.fetchNext}
@@ -23,10 +27,9 @@ const Gallery = props => {
           )
         })}
       </Grid>
-      
       {!props.images.length &&
         <NoResults>
-          No Results
+          {getMsg()}
         </NoResults>
       }
     </Container>

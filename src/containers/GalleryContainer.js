@@ -14,6 +14,9 @@ class GalleryContainer extends Component {
       isCached: false,
     };
   }
+  
+  _isRequesting = true;
+  
   static defaultProps = {
     defaultTerm: 'nature',
     defaultPage: 1,
@@ -39,17 +42,22 @@ class GalleryContainer extends Component {
       term: this.state.renderedTerm,
       isCached: this.state.isCached,
       totalPages: this.state.totalPages,
+      reqDuration: this.state.reqDuration,
     }
   }
   performSearch = (term, page) => {
-    
+    this._isRequesting = true;
+    let start = Date.now();
     if (!term) {
       let images = [];
       let renderedTerm = '';
       let paginationOpts = {};
       let page = 1;
       let totalPages = 0;
-      this.setState({images, paginationOpts, page, totalPages, renderedTerm})
+      let end = Date.now();
+      let reqDuration = end - start;
+      this._isRequesting = false;
+      this.setState({images, reqDuration, paginationOpts, page, totalPages, renderedTerm})
       return;
     }
     
@@ -60,7 +68,10 @@ class GalleryContainer extends Component {
       let paginationOpts = this.state.searchCache[term].paginationOpts;
       let totalPages = this.state.searchCache[term].totalPages;
       let isCached = true;
-      this.setState({isCached, images, renderedTerm, page, totalPages, paginationOpts})
+      let end = Date.now();
+      let reqDuration = end - start;
+      this._isRequesting = false;
+      this.setState({isCached, reqDuration, images, renderedTerm, page, totalPages, paginationOpts})
       return;
     }
     fetchByTerm(term, page).then(res => {
@@ -79,12 +90,16 @@ class GalleryContainer extends Component {
       searchCache[term].totalPages = totalPages;
       searchCache[term].paginationOpts = paginationOpts;
       let isCached = false;
-      this.setState({isCached, images, page, renderedTerm, searchCache, totalPages, paginationOpts})
+      let end = Date.now();
+      let reqDuration = end - start;
+      this._isRequesting = false;
+      this.setState({isCached, reqDuration, images, page, renderedTerm, searchCache, totalPages, paginationOpts})
     });
   }
   render() {
     return(
       <Gallery
+        isRequesting={this._isRequesting}
         stats={this.getStats()}
         images={this.state.images}
         paginationOpts={this.state.paginationOpts}
