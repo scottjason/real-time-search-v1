@@ -2,6 +2,7 @@ import React from 'react';
 import {Input, Form, Container} from './Search.style';
 import Pagination from '../Pagination/Pagination';
 import Stats from '../Stats/Stats';
+import Credits from '../Credits/Credits';
 import debounce from 'debounce';
 
 const Search = props => {
@@ -14,7 +15,7 @@ const Search = props => {
 
   const debouncedSearch = debounce(()=> {
     props.performSearch(getInputVal(), 1);
-  }, 100);
+  }, 300);
   
   const onSubmit = e => {
     e && e.preventDefault();
@@ -49,6 +50,7 @@ const Search = props => {
           fetchNext={fetchNext}
         />
       </Form>
+      <Credits />
     </Container>
   )
 }
