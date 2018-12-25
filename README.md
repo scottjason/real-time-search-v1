@@ -1,9 +1,8 @@
 
-# React ES6 Grid, Image Gallery
-## a responsive image gallery template using the grid
 
+# React ES6 Grid, Search-Based Image Gallery
 
-![enter image description here](https://s3-us-west-1.amazonaws.com/sj-portfolio/images-orig-a-sm.png)
+### Search for images using the unsplash api, render a responsive image gallery using react, es6 and the container / component pattern.
 
 ### Built w/:
 ```
@@ -13,6 +12,10 @@
 - Styled Components
 - CSS Grid Spec
 ```
+![enter image description here](https://s3-us-west-1.amazonaws.com/sj-portfolio/images-orig-a-sm.png)
+
+
+
 
 ---
 
