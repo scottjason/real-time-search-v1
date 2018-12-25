@@ -1,12 +1,14 @@
 import React from 'react';
-import {Term, Container, TotalPages} from './Stats.style';
+import {Term, Origin, Highlight, Container, TotalPages} from './Stats.style';
 
 const Stats = ({ stats }) => {
-  const { term, page, totalPages} = stats;
+  const { term, page, isCached, totalPages} = stats;
+  let msg = isCached ? 'cache' : 'api'
+  let component = <Highlight>{msg}</Highlight>;
   return(
     <Container isHidden={totalPages === 0}>
       <Term>{term}</Term>
-        <TotalPages>page {page} of {totalPages}</TotalPages>
+      <TotalPages>page {page} of {totalPages} / {component} fetch</TotalPages>
     </Container>
   )
 }

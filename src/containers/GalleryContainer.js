@@ -11,6 +11,7 @@ class GalleryContainer extends Component {
       renderedTerm: 'nature',
       searchCache: {},
       totalPages: 0,
+      isCached: false,
     };
   }
   static defaultProps = {
@@ -36,6 +37,7 @@ class GalleryContainer extends Component {
     return {
       page: this.state.page,
       term: this.state.renderedTerm,
+      isCached: this.state.isCached,
       totalPages: this.state.totalPages,
     }
   }
@@ -57,7 +59,8 @@ class GalleryContainer extends Component {
       let images = this.state.searchCache[term][page];
       let paginationOpts = this.state.searchCache[term].paginationOpts;
       let totalPages = this.state.searchCache[term].totalPages;
-      this.setState({images, renderedTerm, page, totalPages, paginationOpts})
+      let isCached = true;
+      this.setState({isCached, images, renderedTerm, page, totalPages, paginationOpts})
       return;
     }
     fetchByTerm(term, page).then(res => {
@@ -75,7 +78,8 @@ class GalleryContainer extends Component {
       let paginationOpts = { left, right }
       searchCache[term].totalPages = totalPages;
       searchCache[term].paginationOpts = paginationOpts;
-      this.setState({images, page, renderedTerm, searchCache, totalPages, paginationOpts})
+      let isCached = false;
+      this.setState({isCached, images, page, renderedTerm, searchCache, totalPages, paginationOpts})
     });
   }
   render() {
