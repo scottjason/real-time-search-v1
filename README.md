@@ -37,4 +37,8 @@ yarn test
 ### Requirements
 To run this app locally, a free api key from [unsplash](https://api.unsplash.com) is needed.
 
+---
+
+### See Live
+
 ![image gallery](https://s3-us-west-1.amazonaws.com/sj-portfolio/house.jpg)
