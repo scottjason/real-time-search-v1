@@ -13,9 +13,6 @@
 - Styled Components
 - CSS Grid Spec, Responsive
 ---
-![image gallery](https://s3-us-west-1.amazonaws.com/sj-portfolio/house.jpg)
-
-
 
 ### Installation
 
@@ -37,6 +34,7 @@ yarn test
 ---
 
 
-
 ### Requirements
 To run this app locally, a free api key from [unsplash](https://api.unsplash.com) is needed.
+
+![image gallery](https://s3-us-west-1.amazonaws.com/sj-portfolio/house.jpg)
