@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {PrevPage, NextPage} from './Pagination.style';
-import { AngleLeft, AngleRight } from 'styled-icons/fa-solid';
+import {AngleLeft, AngleRight} from 'styled-icons/fa-solid';
 
 const Pagination = ({ enabled, fetchPrev, fetchNext }) => {
   return(
-    <React.Fragment>
+    <Fragment>
       {fetchPrev &&
         <PrevPage enabled={enabled} onClick={()=> enabled && fetchPrev()} >
           <AngleLeft />
@@ -15,7 +15,7 @@ const Pagination = ({ enabled, fetchPrev, fetchNext }) => {
           <AngleRight />
         </NextPage>
       }
-    </React.Fragment>    
+    </Fragment>    
   )
 }
 

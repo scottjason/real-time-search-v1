@@ -12,19 +12,22 @@ export const Container = styled.div`
 
 export const Term = styled.p`
   color: #00bbc4;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
+  font-size: .9rem;
 `;
 
-export const TotalPages = styled.p`
-  font-size: .8rem;
+export const Summary = styled.div`
   color: white;
+  font-size: .8rem;
 `;
 
-export const Origin = styled.div`
-  color: white;
-  font-size: .8rem;
-`
 export const Highlight = styled.span`
   color: #00bbc4;
-`
+`;
+
+export const Line = styled.div`
+  width: auto;
+  height: 1px;
+  margin: 2px 0;
+  margin-bottom: 4px;
+  background-color: rgba(225, 225, 225, .3);
+`;

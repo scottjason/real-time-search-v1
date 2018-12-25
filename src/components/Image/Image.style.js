@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import media from 'styled-media-query';
+const hdUrl = 'https://images.unsplash.com/photo-1478562853135-c3c9e3ef7905';
 
 export const Img = styled.div`
   min-height: 300px;

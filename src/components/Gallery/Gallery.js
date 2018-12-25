@@ -17,16 +17,18 @@ const Gallery = props => {
         performSearch={props.performSearch}
         paginationOpts={props.paginationOpts}
       />
-      <Grid>
-        {props.images.map((item, i)=> {
-          return(
-            <Image
-              key={item.id}
-              item={item}
-            />
-          )
-        })}
-      </Grid>
+      {!props.isRequesting &&
+        <Grid>
+          {props.images.map((item, i)=> {
+            return(
+              <Image
+                key={item.id}
+                item={item}
+              />
+            )
+          })}
+        </Grid> 
+      }
       {!props.images.length &&
         <NoResults>
           {getMsg()}
