@@ -13,7 +13,7 @@
 - Styled Components
 - CSS Grid Spec, Responsive
 ---
-![image gallery](https://s3-us-west-1.amazonaws.com/sj-portfolio/green.jpg)
+![image gallery](https://s3-us-west-1.amazonaws.com/sj-portfolio/house.jpg)
 
 
 
